@@ -1,23 +1,22 @@
-CREATE TABLE Agents (
-    agent_id INT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
-);
+-- Total tickets handled by each agent
+SELECT agent_id, COUNT(*) AS total_tickets
+FROM Tickets
+GROUP BY agent_id;
 
-CREATE TABLE Customers (
-    customer_id INT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100)
-);
+-- Average resolution time per agent (in days)
+SELECT agent_id,
+       AVG(julianday(closed_at) - julianday(opened_at)) AS avg_resolution_days
+FROM Tickets
+WHERE status = 'Closed'
+GROUP BY agent_id;
 
-CREATE TABLE Tickets (
-    ticket_id INT PRIMARY KEY,
-    customer_id INT,
-    agent_id INT,
-    issue TEXT,
-    status VARCHAR(20),
-    opened_at DATE,
-    closed_at DATE,
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    FOREIGN KEY (agent_id) REFERENCES Agents(agent_id)
-);
+-- Open vs closed tickets
+SELECT status, COUNT(*) AS count
+FROM Tickets
+GROUP BY status;
+
+-- Customers with most tickets
+SELECT customer_id, COUNT(*) AS ticket_count
+FROM Tickets
+GROUP BY customer_id
+ORDER BY ticket_count DESC;
