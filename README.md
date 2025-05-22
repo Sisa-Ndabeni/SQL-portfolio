@@ -10,9 +10,9 @@ Welcome to my SQL portfolio! This repository showcases real-world projects that 
 
 Simulates a support environment for tracking and analyzing customer tickets, agent perfomance, and service metrics.
 
--Create, populate, and query support data
--Useful for monitoring KPIs like resolution time and ticket volume
--Technologies: SQL, MySQL
+a.Create, populate, and query support data
+b.Useful for monitoring KPIs like resolution time and ticket volume
+c.Technologies: SQL, MySQL
 
 ## More Projects Coming Soon:
 
