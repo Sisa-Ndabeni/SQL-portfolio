@@ -1,13 +1,13 @@
 CREATE TABLE Agents (
     agent_id INT PRIMARY KEY,
     name VARCHAR(100),
-    email VARCHAR(100)
+    email_address VARCHAR(100)
 );
 
 CREATE TABLE Customers (
     customer_id INT PRIMARY KEY,
     name VARCHAR(100),
-    email VARCHAR(100)
+    email_address VARCHAR(100)
 );
 
 CREATE TABLE Tickets (
@@ -19,5 +19,6 @@ CREATE TABLE Tickets (
     opened_at DATE,
     closed_at DATE,
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    FOREIGN KEY (agent_id) REFERENCES Agents(agent_id)
+    FOREIGN KEY (agent_id) REFERENCES Agents(agents_id)
 );
+
